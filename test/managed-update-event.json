@@ -1,0 +1,57 @@
+{
+   "account":"123456789012",
+   "region":"us-west-2",
+   "detail":{
+      "eventVersion":"1.05",
+      "eventID":"83bdb1d4-1c8c-46b7-b603-a9537f949a36",
+      "eventTime":"2017-09-21T19:00:31Z",
+      "requestParameters":{
+         "environmentId":"e-gpvmvj39vj",
+         "optionSettings":[
+            {
+               "optionName":"ActionId",
+               "namespace":"aws:elasticbeanstalk:managedactions",
+               "value":"<sensitiveDataRemoved>"
+            }
+         ],
+         "solutionStackName":"64bit Amazon Linux 2017.03 v2.6.4 running Tomcat 7 Java 7"
+      },
+      "eventType":"AwsApiCall",
+      "responseElements":null,
+      "awsRegion":"us-west-2",
+      "eventName":"UpdateEnvironment",
+      "userIdentity":{
+         "principalId":"YYYYYYYYYYYYYYYYYYYYY:elasticbeanstalk",
+         "accessKeyId":"XXXXXXXXXXXXXXXXXXXX",
+         "invokedBy":"elasticbeanstalk.amazonaws.com",
+         "sessionContext":{
+            "sessionIssuer":{
+               "userName":"aws-elasticbeanstalk-service-role",
+               "type":"Role",
+               "arn":"arn:aws:iam::123456789012:role/aws-elasticbeanstalk-service-role",
+               "principalId":"YYYYYYYYYYYYYYYYYYYYY",
+               "accountId":"123456789012"
+            },
+            "attributes":{
+               "creationDate":"2017-09-21T19:00:28Z",
+               "mfaAuthenticated":"false"
+            }
+         },
+         "type":"AssumedRole",
+         "arn":"arn:aws:sts::123456789012:assumed-role/aws-elasticbeanstalk-service-role/elasticbeanstalk",
+         "accountId":"123456789012"
+      },
+      "eventSource":"elasticbeanstalk.amazonaws.com",
+      "requestID":"2221f7d6-9eff-11e7-be70-af1e56fadbe6",
+      "userAgent":"elasticbeanstalk.amazonaws.com",
+      "sourceIPAddress":"elasticbeanstalk.amazonaws.com"
+   },
+   "detail-type":"AWS API Call via CloudTrail",
+   "source":"aws.elasticbeanstalk",
+   "version":"0",
+   "time":"2017-09-21T19:00:31Z",
+   "id":"bbdd1d62-e45a-2996-7ef6-72d42a755aa7",
+   "resources":[
+
+   ]
+}

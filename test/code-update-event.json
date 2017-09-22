@@ -1,0 +1,43 @@
+{
+   "account":"123456789012",
+   "region":"us-west-2",
+   "detail":{
+      "eventVersion":"1.05",
+      "eventID":"947a15f6-29ee-44e2-bf12-e4a22d323822",
+      "eventTime":"2017-09-21T19:59:17Z",
+      "requestParameters":{
+         "autoCreateApplication":false,
+         "applicationName":"atlantis-ms-cloud",
+         "versionLabel":"my_app.my_branch.7.git389265c9b82f.war",
+         "sourceBundle":{
+            "s3Bucket":"elasticbeanstalk-us-west-2-123456789012",
+            "s3Key":"2017010101010101010-my_app.my_branch.7.git389265c9b82f.war"
+         },
+         "description":"my_app.my_branch.7.git389265c9b82f.war"
+      },
+      "eventType":"AwsApiCall",
+      "responseElements":null,
+      "awsRegion":"us-west-2",
+      "eventName":"CreateApplicationVersion",
+      "userIdentity":{
+         "userName":"devops",
+         "principalId":"YYYYYYYYYYYYYYYYYYYYY",
+         "accessKeyId":"XXXXXXXXXXXXXXXXXXXX",
+         "type":"IAMUser",
+         "arn":"arn:aws:iam::123456789012:user/devops",
+         "accountId":"123456789012"
+      },
+      "eventSource":"elasticbeanstalk.amazonaws.com",
+      "requestID":"598cdaf3-9f07-11e7-ade0-4bde201e5f86",
+      "userAgent":"aws-sdk-ruby/1.67.0 ruby/1.9.3 x86_64-linux",
+      "sourceIPAddress":"72.142.116.74"
+   },
+   "detail-type":"AWS API Call via CloudTrail",
+   "source":"aws.elasticbeanstalk",
+   "version":"0",
+   "time":"2017-09-21T19:59:17Z",
+   "id":"dbb9a7cf-be73-5df0-9c3f-62cf95cbcd6c",
+   "resources":[
+
+   ]
+}
