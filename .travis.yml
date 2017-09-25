@@ -9,7 +9,7 @@ deploy:
   provider: releases
   api_key:
     secure: ruCTntHxiOB8QquC8t9g0+I5U+X91nWdqWrvUcjULYicQPirBllM4KN+PwRJK39z/cPlf8cxPtm6ghpSlxcuRFHewKKD4nUeP9dFZU5JVIIhSSOQGaTKkLat6D7/lN94ALY/rEEC575BFMjmuDLyJqUYe7GTFszz5/W2ja+lFZyOW6iwapJHdJf25W7xReheeVKYLs4V+swuv9lxzSs88WrlqFz2xKF9gBMBOAUpw+FgitxTNRqNRW2q1RJee/03CQTLozLqBM/QO+YCUrZwB4mxCRpZ1vgXwcORSrO0WE+sxhxVYjVAMQWHkFTIGdafziHD6pmeSnhbBH4ZdFdv1iN5w3rFCG4PLHQ5+9ACWB2Hv6qqW5IWKW3o14s3l9eReChFJZhYKLsBBcawPD+KnNn8znPmTNODuViH6VzjIMOiwtMZ8ZfQpv9L/H15w+yuiYbrIhhev4AfJSFbvxxpTiTaGOaZKeLzOOTTi4MnU4UWjORiAN7ZuuDcUOInqYSOej1lnjFjfNtav0dMf2fbJKDXh3G7cB3rg5L6k7ijHPdeDuTFz3nd5oc8HViV6htliF2y6eaVe9ASzq9gi0mlHyhFL07EQYYOlCIaVMxAQz9iWDzVM8R9LL8gYhOrm13Ybi2QQpxGOkG04b4D5QtmZdhQuIFUan8YUiZkPCDzM00=
-  file: eb-platform-update-notify-slack.zip
+  file: dist/eb-platform-update-notify-slack.zip
   skip_cleanup: true
   on:
     tags: true
