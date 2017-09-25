@@ -20,6 +20,14 @@
                   "SlackApiKey",
                   "SlackChannel"
                ]
+            },
+            {
+               "Label":{
+                  "default":"VictorOps Configuration (optional)"
+               },
+               "Parameters":[
+                  "VictorOpsEndpoint"
+               ]
             }
          ]
       }
@@ -44,6 +52,11 @@
          "Type":"String",
          "Default":"#general",
          "Description":"Slack Channel to post scaling notifications to"
+      },
+      "VictorOpsEndpoint":{
+         "Type":"String",
+         "Default":"",
+         "Description":"(optional) VictorOps endpoint to notify"
       }
    },
    "Resources":{
@@ -119,6 +132,9 @@
                   },
                   "slack_channel":{
                      "Ref":"SlackChannel"
+                  },
+                  "victorops_webhook_url":{
+                    "Ref": "VictorOpsEndpoint"
                   }
                }
             },

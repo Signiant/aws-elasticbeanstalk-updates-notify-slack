@@ -1,6 +1,7 @@
 import boto3
 import json
 import sys,os
+import requests
 from slacker import Slacker
 
 def send_to_slack(message,attachment,channel,key):
@@ -19,6 +20,20 @@ def send_to_slack(message,attachment,channel,key):
         as_user="false",
         username="AWS Elastic Beanstalk Notifier",
         icon_emoji=emoji)
+
+    return status
+
+def send_to_victorops(rest_url,message):
+    status= True
+
+    response = requests.post(
+        rest_url, data=json.dumps(message),
+        headers={'Content-Type': 'application/json'}
+    )
+
+    if response.status_code != 200:
+        print "Request to VictorOps returned an error " + response.status_code + " " + response.text
+        status = false
 
     return status
 
@@ -114,6 +129,19 @@ def lambda_handler(event, context):
                         ]
 
                     status = send_to_slack(slack_message,slack_attachment,slack_channel,slack_api_token)
+
+                    if 'victorops_webhook_url' in os.environ:
+                        victorops_endpoint=os.environ['victorops_webhook_url']
+
+                        if victorops_endpoint:
+                            victorops_message = {
+                            	"message_type":"INFO",
+                            	"entity_id":"elasticbeanstalk/" + environment_name ,
+                            	"entity_display_name":"AWS Elastic Beanstalk",
+                            	"state_message":"Managed platform update applied to environment " + environment_name
+                            }
+
+                            send_to_victorops(victorops_endpoint,victorops_message)
             else:
                 print "FATAL: No environment ID specified in the event - unable to process"
                 print("Received event: " + json.dumps(event, indent=2))

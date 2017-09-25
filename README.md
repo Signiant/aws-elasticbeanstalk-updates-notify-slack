@@ -27,3 +27,5 @@ Before installing anything to AWS, you will need to configure a "bot" in Slack t
 * Create a new cloudformation stack using the template in the cfn folder
 
 The stack asks for the function zip file location in S3, the slack API Key and the slack channel to post notifications to. Once the stack is created, a cloudwatch event is created to subscribe the lambda function to the `UpdateEnvironment` elastic beanstalk call. The event is then further interrogated to see if it's an environment update.
+
+You can also optionally provide a [REST endpoint](https://help.victorops.com/knowledge-base/victorops-restendpoint-integration/) to post a notification to [VictorOps](http://www.victorops.com).  If you enter an endpoint here, an `INFO` level notification will be sent to your VictorOps timeline as well as to Slack.
