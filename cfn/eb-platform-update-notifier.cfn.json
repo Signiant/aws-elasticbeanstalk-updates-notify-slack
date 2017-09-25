@@ -82,6 +82,14 @@
                            ],
                            "Effect":"Allow",
                            "Resource":"arn:aws:logs:*:*:*:*"
+                        },
+                        {
+                          "Sid":"Beanstalk",
+                          "Action":[
+                             "elasticbeanstalk:DescribeEnvironments"
+                          ],
+                          "Effect":"Allow",
+                          "Resource":"*"
                         }
                      ]
                   }
