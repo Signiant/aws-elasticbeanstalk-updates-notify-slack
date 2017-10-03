@@ -34,7 +34,7 @@ def send_to_victorops(rest_url, message):
     )
 
     if response.status_code != 200:
-        print("Request to VictorOps returned an error " + response.status_code + " " + response.text)  # noqa: E501
+        print("Request to VictorOps returned an error " + response.status_code + " " + response.text)
         status = False
 
     return status
@@ -48,13 +48,13 @@ def lambda_handler(event, context):
     if 'slack_api_token' in os.environ:
         slack_api_token = os.environ['slack_api_token']
     else:
-        print("FATAL: No slack api token set in the slack_api_token environment variable")  # noqa: E501
+        print("FATAL: No slack api token set in the slack_api_token environment variable")
         status = False
 
     if 'slack_channel' in os.environ:
         slack_channel = os.environ['slack_channel']
     else:
-        print("FATAL: No slack channel set in the slack_channel environment variable")  # noqa: E501
+        print("FATAL: No slack channel set in the slack_channel environment variable")
         status = False
 
     if status:
@@ -64,15 +64,15 @@ def lambda_handler(event, context):
         # First let's see if this is a managed update event
         if event_name == "UpdateEnvironment":
             if 'optionSettings' in event['detail']['requestParameters']:
-                for option in event['detail']['requestParameters']['optionSettings']:  # noqa: E501
-                    print("Found option " + option['optionName'] + " value " + option['value'] + " namespace " + option['namespace'])  # noqa: E501
+                for option in event['detail']['requestParameters']['optionSettings']:
+                    print("Found option " + option['optionName'] + " value " + option['value'] + " namespace " + option['namespace'])
 
-                    if option['namespace'] == 'aws:elasticbeanstalk:managedactions':  # noqa: E501
+                    if option['namespace'] == 'aws:elasticbeanstalk:managedactions':
                         managed_update = True
 
         if managed_update:
             if 'solutionStackName' in event['detail']['requestParameters']:
-                new_platform = event['detail']['requestParameters']['solutionStackName']  # noqa: E501
+                new_platform = event['detail']['requestParameters']['solutionStackName']
             else:
                 print("ERROR: unable to read new platform from event")
                 print("Received event: " + json.dumps(event, indent=2))
@@ -81,7 +81,7 @@ def lambda_handler(event, context):
             if 'environmentId' in event['detail']['requestParameters']:
                 # We get the environment ID in the request, but need to lookup
                 # the env name
-                environment_id = event['detail']['requestParameters']['environmentId']  # noqa: E501
+                environment_id = event['detail']['requestParameters']['environmentId']
                 client = boto3.client('elasticbeanstalk')
 
                 try:
@@ -89,14 +89,14 @@ def lambda_handler(event, context):
                         EnvironmentIds=[environment_id]
                     )
                 except Exception as e:
-                    print("Failed to describe environment " + environment_id + " : " + str(e))  # noqa: E501
+                    print("Failed to describe environment " + environment_id + " : " + str(e))
                     print("Received event: " + json.dumps(event, indent=2))
                     status = False
 
                 if response:
-                    environment_name = response['Environments'][0]['EnvironmentName']  # noqa: E501
-                    application_name = response['Environments'][0]['ApplicationName']  # noqa: E501
-                    current_platform = response['Environments'][0]['SolutionStackName']  # noqa: E501
+                    environment_name = response['Environments'][0]['EnvironmentName']
+                    application_name = response['Environments'][0]['ApplicationName']
+                    current_platform = response['Environments'][0]['SolutionStackName']
 
                     print("environment id: " + environment_id)
                     print("environment_name: " + environment_name)
@@ -141,7 +141,7 @@ def lambda_handler(event, context):
                         slack_api_token)
 
                     if 'victorops_webhook_url' in os.environ:
-                        victorops_endpoint = os.environ['victorops_webhook_url']  # noqa: E501
+                        victorops_endpoint = os.environ['victorops_webhook_url']
 
                         if victorops_endpoint:
                             victorops_message = {
@@ -149,13 +149,13 @@ def lambda_handler(event, context):
                                 "entity_id": "elasticbeanstalk/" +
                                 environment_name,
                                 "entity_display_name": "AWS Elastic Beanstalk",
-                                "state_message": "Managed platform update applied to environment " +  # noqa: E501
+                                "state_message": "Managed platform update applied to environment " +
                                 environment_name}
 
                             send_to_victorops(
                                 victorops_endpoint, victorops_message)
             else:
-                print("FATAL: No environment ID specified in the event - unable to process")  # noqa: E501
+                print("FATAL: No environment ID specified in the event - unable to process")
                 print("Received event: " + json.dumps(event, indent=2))
                 status = False
 
