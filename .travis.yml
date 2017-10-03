@@ -4,7 +4,12 @@ python:
 install:
 - pip install slacker -t ./dist
 - pip install requests -t ./dist
-script: ./build.sh
+- pip install flake8
+before_script:
+  - flake8 --version
+script:
+  - flake8 --ignore=E501 lambda/
+  - ./build.sh
 deploy:
   provider: releases
   api_key:
