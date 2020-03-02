@@ -146,11 +146,9 @@ def lambda_handler(event, context):
                         if victorops_endpoint:
                             victorops_message = {
                                 "message_type": "INFO",
-                                "entity_id": "elasticbeanstalk/" +
-                                environment_name,
+                                "entity_id": "elasticbeanstalk/" + environment_name,
                                 "entity_display_name": "AWS Elastic Beanstalk",
-                                "state_message": "Managed platform update applied to environment " +
-                                environment_name}
+                                "state_message": "Managed platform update applied to environment " + environment_name}
 
                             send_to_victorops(
                                 victorops_endpoint, victorops_message)
