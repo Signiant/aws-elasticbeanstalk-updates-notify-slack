@@ -121,7 +121,7 @@
                   "Arn"
                ]
             },
-            "Runtime":"python2.7",
+            "Runtime":"python3.8",
             "Handler":"eb-platform-update-notify-slack.lambda_handler",
             "MemorySize":128,
             "Timeout":20,
